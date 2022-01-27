@@ -1,0 +1,52 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background-image: radial-gradient(#e7e7e7 15%, transparent 10%) !important;
+  background-size: 10px 10px !important;
+}
+
+.main-wrapper .card-deck {
+  border: 4px solid #e641ce;
+  border-radius: 4px;
+  margin-bottom: 0px !important;
+}
+
+.card {
+  margin-bottom: 0px !important;
+}
+
+#book-fd,
+#close-fd {
+  background-color: #560cce;
+  border-color: #560cce;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}

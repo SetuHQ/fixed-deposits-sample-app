@@ -1,0 +1,15 @@
+{
+  "name": "Fixed Deposits Express Sample",
+  "description": "A simple FD app built using Setu Deposits",
+  "keywords": [
+    "setu",
+    "node",
+    "nodejs",
+    "express",
+    "deposits",
+    "fd",
+    "fixed-deposit"
+  ],
+  "website": "https://setu.co",
+  "repository": "https://github.com/SetuHQ/fixed-deposits-sample-app"
+}

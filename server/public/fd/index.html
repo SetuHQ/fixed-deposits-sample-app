@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Fixed deposit breakdown</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="bootstrap.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container mt-5 main-wrapper">
+      <div class="card-deck text-center">
+        <div class="card md-offset-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Fixed deposit breakdown</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">
+              <small class="text-muted">Maturity amount</small> <br />₹
+              <span id="maturity"></span>
+            </h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Amount requested: <span id="amount"></span></li>
+              <li>Tenure: <span id="tenure"></span></li>
+              <li>Interest: <span id="interest"></span></li>
+            </ul>
+            <button
+              type="button"
+              id="book-fd"
+              class="btn btn-lg btn-block btn-primary"
+              onclick="userAction()"
+            >
+              Proceed to book FD
+            </button>
+            <button
+              type="button"
+              class="btn btn-lg btn-block btn-primary"
+              id="close-fd"
+              style="display: none"
+              onclick="window.location.href='https://demo-fd.herokuapp.com/redirect'"
+            >
+              Back to Invest First
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      let tenure = params.tenure;
+      let amount = params.amount;
+      let interestRate;
+      if (tenure > 90 && tenure <= 180) {
+        interestRate = 4.35;
+      } else if (tenure > 180 && tenure <= 364) {
+        interestRate = 4.85;
+      } else {
+        interestRate = 5.85;
+      }
+      let maturityAmount =
+        amount * Math.pow(1 + interestRate / 100, tenure / 365.0);
+      document.getElementById("maturity").innerHTML = maturityAmount.toFixed(2);
+      document.getElementById("amount").innerHTML = "₹ " + amount;
+      document.getElementById("tenure").innerHTML =
+        Math.round(tenure / 30) + " months";
+      document.getElementById("interest").innerHTML = interestRate + " %";
+      const userAction = async () => {
+        const response = await fetch("https://demo-fd.herokuapp.com/book-fd", {
+          method: "POST",
+          body: JSON.stringify(params), // string or object
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const myJson = await response.json();
+        document.getElementById("book-fd").style.display = "none";
+        document.getElementById("close-fd").style.display = "block";
+        await launchSDK(myJson);
+      };
+    </script>
+    <script
+      type="text/javascript"
+      src="https://fd-icons.s3.ap-south-1.amazonaws.com/sdk.js"
+    ></script>
+    <script type="text/javascript">
+      function launchSDK(body) {
+        document.Setu.FD.init(body);
+      }
+    </script>
+  </body>
+</html>
