@@ -13,4 +13,6 @@ module.exports = {
   port: process.env.PORT || 3000,
   SANDBOX_API_URL: process.env.SANDBOX_API_URL,
   PROD_API_URL: process.env.PROD_API_URL,
+  CLIENT_ID: process.env.CLIENT_ID,
+  CLIENT_SECRET: process.env.CLIENT_SECRET,
 };

@@ -5,8 +5,8 @@ const config = require("../config");
 
 const partnerToken = () => {
   var data = qs.stringify({
-    client_id: "test",
-    client_secret: "7a1958fa-3223-4349-9cde-98f4cd4350ff",
+    client_id: config.CLIENT_ID,
+    client_secret: config.CLIENT_SECRET,
     grant_type: "client_credentials",
     "": "",
   });

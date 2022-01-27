@@ -22,7 +22,7 @@ const fd_body = {
   theme: {
     textColor: "#560CCE",
     bgColor: "#560CCE",
-    logoUrl: "https://demo-fd.herokuapp.com/logo.png",
+    logoUrl: "<URL_OF_YOUR_BACKEND>/logo.png",
   },
   provider: "EQTS",
   prefills: {
